@@ -1,0 +1,6 @@
+name: minecraft
+runtime: 
+  name: nodejs
+  nodeargs: "--loader ts-node/esm --no-warnings"
+description: ⛏
+main: infra/main.ts
