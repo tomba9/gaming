@@ -51,6 +51,7 @@ const envs: Record<string, string> = {
   OVERRIDE_ICON: 'true',
   TYPE: 'CURSEFORGE',
   MEMORY: '14G',
+  CF_BASE_DIR: '/data',
   CF_SERVER_MOD:
     'https://mediafiles.forgecdn.net/files/3467/826/MC-Eternal-Lite-1.3.8.1-SERVER.zip',
   RCON_CMDS_STARTUP: dedent`
