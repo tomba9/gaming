@@ -18,7 +18,7 @@ export const minecraftConfig = {
 
 export const _users = new pulumi.Config('users');
 
-type Role = { googleAccount: string; minecraftUser: string };
+type Role = { googleAccount: string };
 
 export const users = {
   managers: _users.requireObject<Role[]>('managers'),
