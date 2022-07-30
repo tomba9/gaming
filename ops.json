@@ -1,3 +1,14 @@
-{
-  "name": "cobraz"
-}
+[
+  {
+    "uuid": "44f175ca-a327-4016-a4f4-97540a1c3d76",
+    "name": "Moripper",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "53bedb36-7744-48ab-ab60-e19bb63bfe71",
+    "name": "cobraz",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  }
+]
