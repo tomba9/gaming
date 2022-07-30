@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@pulumi/google-native": "^0.21.0",
-    "@pulumi/pulumi": "^3.37.0",
+    "@pulumi/pulumi": "^3.37.1",
     "dedent": "^0.7.0",
     "yaml": "^2.1.1"
   },
