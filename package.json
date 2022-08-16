@@ -34,7 +34,7 @@
     "dotenv-load": "^2.0.1",
     "jest": "^28.1.3",
     "prettier": "^2.5.1",
-    "ts-jest": "^28.0.6",
+    "ts-jest": "^28.0.8",
     "typescript": "^4.7.4"
   },
   "license": "Apache-2.0"
