@@ -29,7 +29,7 @@
     "@cobraz/prettier": "^2.0.0",
     "@tsconfig/node16-strictest-esm": "^1.0.3",
     "@types/dedent": "^0.7.0",
-    "@types/jest": "^28.1.5",
+    "@types/jest": "^28.1.8",
     "@types/node": "16",
     "dotenv-load": "^2.0.1",
     "jest": "^28.1.3",
