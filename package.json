@@ -19,7 +19,7 @@
     "lint": "eslint . --ext .ts,.tsx"
   },
   "dependencies": {
-    "@pulumi/google-native": "^0.22.0",
+    "@pulumi/google-native": "^0.27.0",
     "@pulumi/pulumi": "^3.37.1",
     "dedent": "^0.7.0",
     "yaml": "^2.1.1"
