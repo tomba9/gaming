@@ -1,0 +1,20 @@
+config:
+  ark:admin-password:
+    secure: AAABADL58ANBP43j/0Z98MXIaed6+BQqiZclj6XAsw4vYaPzb24OnKkL8g==
+  ark:game-mod-ids:
+  - 731604991
+  - 764755314
+  - 926567353
+  - 741203089
+  - 761535755
+  - 1404697612
+  - 1609138312
+  ark:image: hermsi/ark-server:latest-1669093394
+  ark:server-map: fjordur
+  ark:server-password:
+    secure: AAABAO+09x6BQLcCE1chcAqveZg7qBknZmvVMVZKSSOd9TpBxbA=
+  google:project: bjerk-gaming
+  google:region: europe-north1
+  google:zone: europe-north1-a
+  users:managers:
+  - googleAccount: so@bjerk.io
