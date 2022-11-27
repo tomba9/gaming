@@ -1,5 +1,5 @@
 import * as google from '@pulumi/google-native';
-import * as dedent from 'dedent';
+import * as pulumi from '@pulumi/pulumi';
 import * as YAML from 'yaml';
 import { arkConfig, googleConfig } from './config';
 import { roles } from './iam';
@@ -39,14 +39,14 @@ const ipAddress = new google.compute.v1.Address(
   { provider: googleProvider },
 );
 
-const envs: Record<string, string> = {
-  SESSION_NAME: 'Bjerk & Friends',
-  SERVER_MAP: String(arkConfig.serverMap),
-  SERVER_PASSWORD: String(arkConfig.serverPassword),
-  ADMIN_PASSWORD: String(arkConfig.adminPassword),
-  MAX_PLAYERS: String(arkConfig.maxPlayers),
-  BACKUP_ON_STOP: String(arkConfig.backupOnStop),
-  GAME_MOD_IDS: String(arkConfig.gameModIds.join(',')),
+const envs: Record<string, pulumi.Output<string>> = {
+  SESSION_NAME: pulumi.output('Bjerk & Friends'),
+  SERVER_MAP: pulumi.output(String(arkConfig.serverMap)),
+  SERVER_PASSWORD: arkConfig.serverPassword,
+  ADMIN_PASSWORD: arkConfig.adminPassword,
+  MAX_PLAYERS: pulumi.output(String(arkConfig.maxPlayers)),
+  BACKUP_ON_STOP: pulumi.output(String(arkConfig.backupOnStop)),
+  GAME_MOD_IDS: pulumi.output(String(arkConfig.gameModIds.join(','))),
 };
 
 new google.compute.v1.Instance(
@@ -72,39 +72,41 @@ new google.compute.v1.Instance(
       items: [
         {
           key: 'gce-container-declaration',
-          value: YAML.stringify({
-            spec: {
-              restartPolicy: 'Always',
-              containers: [
-                {
-                  name: 'ark',
-                  image: arkConfig.image,
-                  stdin: false,
-                  tty: false,
-                  env: Object.entries(envs).map(([name, value]) => ({
-                    name,
-                    value,
-                  })),
-                  ports: gamePorts.map((port) => ({
+          value: pulumi.all(envs).apply(unwrappedEnvs =>
+            YAML.stringify({
+              spec: {
+                restartPolicy: 'Always',
+                containers: [
+                  {
+                    name: 'ark',
+                    image: arkConfig.image,
+                    stdin: false,
+                    tty: false,
+                    env: Object.entries(unwrappedEnvs).map(([name, value]) => ({
+                      name,
+                      value,
+                    })),
+                    ports: gamePorts.map(port => ({
                       containerPort: port,
                     })),
-                  volumeMounts: [
-                    { name: 'pd-0', mountPath: '/data', readOnly: false },
-                  ],
-                },
-              ],
-              volumes: [
-                {
-                  name: 'pd-0',
-                  gcePersistentDisk: {
-                    pdName: 'map-disk',
-                    fsType: 'ext4',
-                    readOnly: false,
+                    volumeMounts: [
+                      { name: 'pd-0', mountPath: '/app', readOnly: false },
+                    ],
                   },
-                },
-              ],
-            },
-          }),
+                ],
+                volumes: [
+                  {
+                    name: 'pd-0',
+                    gcePersistentDisk: {
+                      pdName: 'map-disk',
+                      fsType: 'ext4',
+                      readOnly: false,
+                    },
+                  },
+                ],
+              },
+            }),
+          ),
         },
       ],
     },
