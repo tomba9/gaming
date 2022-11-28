@@ -25,6 +25,10 @@ const computeFirewall = new google.compute.v1.Firewall(
         ipProtocol: 'tcp',
         ports: [...gamePorts, '22'],
       },
+      {
+        ipProtocol: 'udp',
+        ports: [...gamePorts, '22'],
+      },
     ],
   },
   { provider: googleProvider },
@@ -47,6 +51,7 @@ const envs: Record<string, pulumi.Output<string>> = {
   MAX_PLAYERS: pulumi.output(String(arkConfig.maxPlayers)),
   BACKUP_ON_STOP: pulumi.output(String(arkConfig.backupOnStop)),
   GAME_MOD_IDS: pulumi.output(String(arkConfig.gameModIds.join(','))),
+  UPDATE_ON_START: pulumi.output('true'),
 };
 
 new google.compute.v1.Instance(

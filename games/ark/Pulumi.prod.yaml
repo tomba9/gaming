@@ -10,7 +10,7 @@ config:
   - 1404697612 # Awesome Spyglass!
   - 1609138312 # Dino Storage v2
   ark:image: hermsi/ark-server:latest-1669093394
-  ark:server-map: fjordur
+  ark:server-map: Fjordur
   ark:server-password:
     secure: AAABAO+09x6BQLcCE1chcAqveZg7qBknZmvVMVZKSSOd9TpBxbA=
   google:project: bjerk-gaming
