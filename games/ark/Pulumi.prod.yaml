@@ -2,13 +2,15 @@ config:
   ark:admin-password:
     secure: AAABADL58ANBP43j/0Z98MXIaed6+BQqiZclj6XAsw4vYaPzb24OnKkL8g==
   ark:game-mod-ids:
-  - 731604991 # Structures Plus +
+  - 1999447172 # Super Structures
   - 764755314 # Castles, Keeps and Forts Medieval Architecture
   - 926567353 # eco's Camping Deco
   - 741203089 # eco's RP Decor
   - 761535755 # Ultra stacks
   - 1404697612 # Awesome Spyglass!
   - 1609138312 # Dino Storage v2
+  - 1300713111 # Rare sightings
+  - 1210379301 # Grapple
   ark:image: hermsi/ark-server:latest-1669093394
   ark:server-map: Fjordur
   ark:server-password:
